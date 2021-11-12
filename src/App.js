@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import {Button} from "react-bootstrap";
 import LayoutWebsite from './layout/LayoutWebsite';
 import Products from './pages/products';
-import { list, remove } from './api/productAPI';
+import { create, list, remove, update } from './api/productAPI';
 import ProductDetail from './pages/products/ProductDetail';
 import LayoutAdmin from './layout/LayoutAdmin';
 import AminProducts from './pages/admin/products';
@@ -52,11 +52,17 @@ function App() {
     }
   }
   const handleAddPoduct = (data) => {
-    setProducts([...products, data])
+    create(data).then((response)=>{
+      setProducts([...products, response.data])
+    })
+    
   };
   const handleUpdateProduct = (data) => {
-    const newData = products.filter( item => item.id !== data.id);
-    setProducts([...newData, data])
+    const newProductUpdate = products.filter( item => item.id !== data.id);
+    update(data).then((response)=>{
+      setProducts([...newProductUpdate,response.data])
+    })
+    
   }
   ///*End Product*/////
 

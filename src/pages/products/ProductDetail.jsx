@@ -18,8 +18,8 @@ const ProductDetail = () => {
     return (
         <div className="container">
             {product !== null && <div className="row">
-                <div className="col-4">
-                    <img src={product.img} alt="" />
+                <div className="col-3">
+                    <img width="500"  src={product.img} alt="" />
                 </div>
 
                 <div className="col-8">
