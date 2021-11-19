@@ -10,7 +10,6 @@ const ProductDetail = () => {
         const {data} = await read(id);
         setProduct(data)
     }
-
     useEffect(() => {
         getProduct()
     }, [])
@@ -23,8 +22,8 @@ const ProductDetail = () => {
                 </div>
 
                 <div className="col-8">
-                    <h1>{product.name}</h1>
-                    <h3>{product.price}</h3>
+                    <h1>Tên :{product.name}</h1>
+                    <h3>Giá :{product.price}$</h3>
                 </div>
             </div>}
         </div>

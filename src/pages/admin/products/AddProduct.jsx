@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const AddProduct = ({ handleAddPoduct }) => {
     
@@ -14,6 +15,7 @@ const AddProduct = ({ handleAddPoduct }) => {
     const onSubmit = (data) => {
         handleAddPoduct(data);
         navigate('/admin/products')
+        toast.success('them thanh cong');
     };
     return (
         <>

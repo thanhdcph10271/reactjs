@@ -4,6 +4,7 @@ import {Link,Outlet} from 'react-router-dom';
 import { list } from '../../api/productAPI';
 
 const Products = ({products}) => {
+    
 
     return (
         <div className="container">
@@ -18,6 +19,7 @@ const Products = ({products}) => {
                                         <Link to={`/product/${item.id}`} className="btn btn-primary">Chi tiết </Link>
                                     </div>
                             </div>
+                            
                         </div>)}
             </div>
         </div>

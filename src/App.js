@@ -20,16 +20,22 @@ import AddProduct from './pages/admin/products/AddProduct';
 import UpdateProduct from './pages/admin/products/UpdateProduct';
 import AdminCategory from './pages/admin/categories';
 import { listCategory, removeCategory } from './api/categoriesAPI';
+import PrivateAdmin from './components/PrivateAdmin';
+import Signup from './pages/products/Signup';
+import Signin from './pages/products/Signin';
 function App() {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
     const {data} = await list();
     setProducts(data);
+    
   }
   useEffect( () => {
     getProducts()
+   
   }, []);
+  
 
   const [category,setCategory]= useState([]);
 
@@ -59,6 +65,8 @@ function App() {
   };
   const handleUpdateProduct = (data) => {
     const newProductUpdate = products.filter( item => item.id !== data.id);
+    console.log(products.filter( item => item.id !== data.id))
+   
     update(data).then((response)=>{
       setProducts([...newProductUpdate,response.data])
     })
@@ -99,9 +107,17 @@ function App() {
           <Route path="/product" element={<Products products={products}/>} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/category" element={<div>Danh muc</div>} />
+          <Route path="/signup" element={<Signup/>} />
+          <Route path="/signin" element={<Signin/>} />
         </Route>
 
-        <Route path="/admin" element={<LayoutAdmin/>} >
+        <Route path="/admin" element={
+         <PrivateAdmin abc="123">
+           <LayoutAdmin/>
+         </PrivateAdmin>
+
+        } >
+
           <Route index element={<div>Dashboard</div>} />
           <Route path="/admin/categories" element={<AdminCategory category={category} handleRemoveCategory={handleRemoveCategory} />} />
           <Route path="/admin/product/:id/update" element={<UpdateProduct products={products} handleUpdateProduct={handleUpdateProduct} />} />

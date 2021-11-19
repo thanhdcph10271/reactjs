@@ -5,8 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { useForm} from 'react-hook-form';
  
 const UpdateProduct = ({products, handleUpdateProduct}) => {
+    
+    
     const { id } = useParams();
-    const [product, setProduct] = useState(products.filter( item => item.id === id)[0]);
+
+    const [product, setProduct] = useState(products.filter(item=>item.id==id)[0]);
+    console.log(product)
+  
     const {register,
         handleSubmit,
         formState:{errors}
@@ -14,10 +19,12 @@ const UpdateProduct = ({products, handleUpdateProduct}) => {
     const navigate = useNavigate();
     const onSubmit = (data) =>{
         const dataUpdate ={
-            id:id,
+            id:parseInt(id),
             ...data
-        }
+        }   
+      
         handleUpdateProduct(dataUpdate);
+        console.log(dataUpdate)
         navigate('/admin/products')
         // console.log(dataUpdate)
     }

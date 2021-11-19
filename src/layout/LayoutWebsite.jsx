@@ -31,6 +31,12 @@ export default function LayoutWebsite() {
         <li className="nav-item">
           <Link to="/admin" className="nav-link">Trang Admin</Link>
         </li> 
+        <li className="nav-item">
+          <Link to="/signup" className="nav-link">Đăng ký</Link>
+        </li> 
+        <li className="nav-item">
+          <Link to="/signin" className="nav-link">Đăng nhập</Link>
+        </li> 
       </ul>
       <form className="d-flex">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
